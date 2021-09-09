@@ -5,7 +5,7 @@ function hello(str) {
   console.log('hello', str);
   if (a) {
     
-    
+    console.log("this awesome. awesome!");
     
   }
   
