@@ -1,4 +1,4 @@
-var a = 'Bar';
+var a = 'Bar H';
 
 function hello(str) {
   
