@@ -50,7 +50,7 @@ function hello(str) {
   
   if (a) {
     
-    console.log("this is awesome. awesome!");
+    console.log("this is awesome.");
     
   }
   
