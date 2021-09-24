@@ -4,8 +4,6 @@ function hello(str) {
   
   console.log('hello', str);
   
-  console.log('Hello #2');
-  
   if (a) {
     
     console.log("this is awesome. awesome!");
