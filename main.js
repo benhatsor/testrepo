@@ -14,7 +14,7 @@ function hello(str) {
   
 }
 
-1325654
+
 
 a.foreach((a,i)=>{
   stam  = i;
