@@ -14,6 +14,11 @@ function hello(str) {
   
 }
 
+
+
+
+asdfasdfasdf
+
 a.foreach((a,i)=>{
   stam  = i;
 });
