@@ -16,12 +16,7 @@ function hello(str) {
 
 
 
-stam = {
-  function (stam-=1);
-  //evil number is always right
-  a =`somethning never change${stam}`;
-  let truth = a > b ? 1:4;  
-}
+push2
 
 
 
