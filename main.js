@@ -13,8 +13,6 @@ function hello(str) {
   }
   
 }
-asdASD
-
 
 a.foreach((a,i)=>{
   stam  = i;
