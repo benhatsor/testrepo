@@ -16,6 +16,7 @@ function hello(str) {
 
 push1
 push2
+push3
 
 
 
