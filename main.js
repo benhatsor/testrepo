@@ -14,10 +14,7 @@ function hello(str) {
   
 }
 
-
-
-
-asdfasdfasdf
+1325654
 
 a.foreach((a,i)=>{
   stam  = i;
