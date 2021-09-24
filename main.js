@@ -14,7 +14,16 @@ function hello(str) {
   
 }
 
-push1
+
+
+stam = {
+  function (stam-=1);
+  //evil number is always right
+  a =`somethning never change${stam}`;
+  let truth = a > b ? 1:4;  
+}
+
+
 
 
 a.foreach((a,i)=>{
