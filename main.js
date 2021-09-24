@@ -14,6 +14,27 @@ function hello(str) {
   
 }
 
+
+
+a.foreach((a,i)=>{
+  stam  = i;
+});
+
+a = {
+  a:stam,
+  b:3,
+  c:{a:2,a:3}
+};
+a = [];
+a = [1,3,4, {a:stam,b:324}]
+//sdtams
+//{
+  
+}"
+<div>
+</div>
+
+
 var a = 'Bar';
 
 function hello(str) {
