@@ -8,6 +8,8 @@ function hello(str) {
     
     console.log("this is awesome. awesome!");
     
+    console.log("Something else...");
+    
   }
   
 }
