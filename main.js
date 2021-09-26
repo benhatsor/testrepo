@@ -15,12 +15,21 @@ function hello(str) {
 }
 
 
+if(jj==kk)
+{
+  stam = kk;
+}
+
 
 
 for(sjddn) {	
 xbxxx.stop= stap;
 }
 
+a.foreach((i,j)=>{
+  stam=aa;
+  
+}
 if( ddjjj ) {	xxn
 } else {	dxx
 }
