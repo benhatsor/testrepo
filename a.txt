@@ -1,9 +1,2 @@
-Mobile change from Codeit.
-...
-...
 
-
-a = stam(){
-  foreach(stam=>{
-    )
-}
+push1
