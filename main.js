@@ -16,11 +16,13 @@ function hello(str) {
 
 
 
-push2
-push3
+for(sjddn) {	
+xbxxx.stop= stap;
+}
 
-
-
+if( ddjjj ) {	xxn
+} else {	dxx
+}
 
 a.foreach((a,i)=>{
   stam  = i;
