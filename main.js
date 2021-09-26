@@ -14,6 +14,9 @@ function hello(str) {
   
 }
 
+push1
+
+
 
 if(jj==kk)
 {
