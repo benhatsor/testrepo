@@ -1,11 +1,11 @@
 
 
-update the sidebar html with new sha when push to git
+[-] update the sidebar html with new sha when push to git
 
-when rendering sidebar
+[-] when rendering sidebar
 change sha in sidebar html to new if 
 detected in modifiedFiles old eclipsed file 
 follow the sha trail in modifiedFiles
 
 
-when saving old versions sha in modifiedFiles don't save the content 
+[-] when saving old versions sha in modifiedFiles don't save the content 
