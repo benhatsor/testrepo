@@ -3,3 +3,4 @@ function say(message) {
 }
 
 say('Hello world!');
+another
