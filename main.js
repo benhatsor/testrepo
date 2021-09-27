@@ -1,3 +1,5 @@
-push1
-stam
-stam2
+function say(message) {
+  console.log(message);
+}
+
+say('Hello world!');
