@@ -60,8 +60,15 @@ function getSelectionHtml() {
 
 
 
+//Getting the number of rows selected:
+var selection = window.getSelection();
+var getRange = selection.getRangeAt(0); 
+getRect = getRange.getBoundingClientRect();
+let fontHeight = 22;
+console.log('num of rows selected',getRect.Height/fondHeight);
 
-
+//Or one liner:
+console.log( window.getSelection().getRangeAt(0).getBoundingClientRect().Height/22 )
 
 
 
