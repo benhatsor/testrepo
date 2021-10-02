@@ -17,3 +17,18 @@ function typeNode(text) {
 
 
 
+
+document.addEventListener('selectionchange', () => {
+  
+  const selPos = cd.getSelection();
+  
+  console.log(selPos.end - selPos.start);
+  
+});
+
+
+
+
+
+window.getSelection()
+element.getBoundingClientRect()
