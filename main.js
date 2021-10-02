@@ -73,14 +73,17 @@ document.addEventListener('selectionchange', () => { console.log( window.getSele
 
 //Prevent selection jumping:
 let lastNode=null
+let lastNumberLines = 0
 document.addEventListener('selectionchange', () => { 
-if( window.getSelection().getRangeAt(0).getBoundingClientRect().height/22 > 2 )
+let delta = Math.abs(lastNumberLines - window.getSelection().getRangeAt(0).getBoundingClientRect().height/22)
+if( delta  > 2 )
 { 
   console.log( window.getSelection().getRangeAt(0).getBoundingClientRect().height/22 ) 
-  if(lastNode) window.getSelection().extend(lastNode , 1);
+  if(lastNode) window.getSelection().extend(lastNode , 1);  
   
 }else{
   lastNode = window.getSelection().focusNode;
+  lastNumberLines  = window.getSelection().getRangeAt(0).getBoundingClientRect().height/22;
 } 
 })
 
