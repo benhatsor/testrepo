@@ -37,6 +37,7 @@ element.getBoundingClientRect()
 
 function getSelectionHtml() {
     var html = "";
+    let result = null;
     if (typeof window.getSelection != "undefined") {
         var sel = window.getSelection();
         if (sel.rangeCount) {
@@ -46,6 +47,7 @@ function getSelectionHtml() {
             }
             //html = container.innerHTML;
             html = container;
+            result  = container;
         }
     } else if (typeof document.selection != "undefined") {
         if (document.selection.type == "Text") {
@@ -53,5 +55,15 @@ function getSelectionHtml() {
             html = document.selection.createRange();
         }
     }
-    return html;
+    return result;
 }
+
+
+
+
+
+
+
+
+
+
