@@ -75,7 +75,8 @@ document.addEventListener('selectionchange', () => { console.log( window.getSele
 let lastNode=null
 document.addEventListener('selectionchange', () => { 
 if( window.getSelection().getRangeAt(0).getBoundingClientRect().height/22 > 2 )
-{  
+{ 
+  console.log( window.getSelection().getRangeAt(0).getBoundingClientRect().height/22 ) 
   if(lastNode) window.getSelection().extend(lastNode , 1);
   
 }else{
