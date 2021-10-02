@@ -75,7 +75,7 @@ document.addEventListener('selectionchange', () => { console.log( window.getSele
 let lastNode=null
 let lastNumberLines = 0
 document.addEventListener('selectionchange', () => { 
-let delta = Math.abs(lastNumberLines - window.getSelection().getRangeAt(0).getBoundingClientRect().height/22)
+let delta = (window.getSelection().getRangeAt(0).getBoundingClientRect().height/22 - lastNumberLines )
 if( delta  > 2 )
 { 
   console.log( window.getSelection().getRangeAt(0).getBoundingClientRect().height/22 ) 
