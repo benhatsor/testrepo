@@ -78,8 +78,9 @@ document.addEventListener('selectionchange', () => {
 let delta = (window.getSelection().getRangeAt(0).getBoundingClientRect().height/22 - lastNumberLines )
 if( delta  > 2 )
 { 
-  console.log( delta  )   
-  if(lastNode) window.getSelection().extend(lastNode , 1);  
+  console.log( delta,lastNode.innerHTML  )   
+  if(lastNode) window.getSelection().extend(lastNode , 0);
+  
   
 }else{
   lastNode = window.getSelection().focusNode;
