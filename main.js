@@ -78,7 +78,7 @@ document.addEventListener('selectionchange', () => {
 let delta = (window.getSelection().getRangeAt(0).getBoundingClientRect().height/22 - lastNumberLines )
 if( delta  > 2 )
 { 
-  console.log( window.getSelection().getRangeAt(0).getBoundingClientRect().height/22 ) 
+  console.log( delta  )   
   if(lastNode) window.getSelection().extend(lastNode , 1);  
   
 }else{
