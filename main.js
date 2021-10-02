@@ -44,7 +44,8 @@ function getSelectionHtml() {
             for (var i = 0, len = sel.rangeCount; i < len; ++i) {
                 container.appendChild(sel.getRangeAt(i).cloneContents());
             }
-            html = container.innerHTML;
+            //html = container.innerHTML;
+            html = container;
         }
     } else if (typeof document.selection != "undefined") {
         if (document.selection.type == "Text") {
