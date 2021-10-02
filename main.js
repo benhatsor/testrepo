@@ -29,6 +29,6 @@ document.addEventListener('selectionchange', () => {
 
 
 
-
+//Check the the selection bug:
 window.getSelection()
 element.getBoundingClientRect()
