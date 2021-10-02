@@ -68,7 +68,20 @@ let fontHeight = 22;
 console.log('num of rows selected',getRect.Height/fondHeight);
 
 //Or one liner:
-console.log( window.getSelection().getRangeAt(0).getBoundingClientRect().Height/22 )
+document.addEventListener('selectionchange', () => { console.log( window.getSelection().getRangeAt(0).getBoundingClientRect().height/22 ) })
+
+
+//Prevent selection jumping:
+let lastNode=null
+document.addEventListener('selectionchange', () => { 
+if( window.getSelection().getRangeAt(0).getBoundingClientRect().height/22 > 2 )
+{  
+  if(lastNode) window.getSelection().extend(lastNode , 1);
+  
+}else{
+  lastNode = window.getSelection().focusNode;
+} 
+})
 
 
 
