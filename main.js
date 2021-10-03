@@ -92,7 +92,7 @@ if( delta  > 2 )
 
 //Doesnt work:
 document.addEventListener('mousedown', () => {
-  document.addEventListener('onmousemove', () => {
+  document.addEventListener('mousemove', () => {
   console.log(document.getRangeFromPoint().getBoundingClientRect() )});
 });
 
