@@ -92,8 +92,13 @@ if( delta  > 2 )
 
 //Doesnt work:
 document.addEventListener('mousedown', () => {
-  console.log(getRangeFromPoint().getBoundingClientRect() );
-}
+  document.addEventListener('onmousemove', () => {
+  console.log(document.getRangeFromPoint().getBoundingClientRect() )});
+});
+
+
+
+
 
 function mouseDown() {
   console.log(caretRangeFromPoint().getBoundingClientRect() );
