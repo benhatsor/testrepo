@@ -89,6 +89,8 @@ if( delta  > 2 )
 })
 
 
+
+//Doesnt work:
 document.addEventListener('mousedown', () => {
   console.log(getRangeFromPoint().getBoundingClientRect() );
 }
