@@ -89,6 +89,15 @@ if( delta  > 2 )
 })
 
 
+document.addEventListener('mousedown', () => {
+  console.log(getRangeFromPoint().getBoundingClientRect() );
+}
+
+function mouseDown() {
+  console.log(caretRangeFromPoint().getBoundingClientRect() );
+  
+}
+
 
 
 
