@@ -105,6 +105,11 @@ function mouseDown() {
   
 }
 
+function stam()
+{
+  return dd++;
+}
+
 
 
 
