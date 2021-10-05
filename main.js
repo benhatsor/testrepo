@@ -29,7 +29,7 @@ document.addEventListener('selectionchange', () => {
 
 
 
-// check the the selection bug:
+// check the the selection bug
 window.getSelection()
 element.getBoundingClientRect()
 
