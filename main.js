@@ -113,3 +113,8 @@ function stam()
 
 
 
+
+function hello() {
+  console.log("hello")
+}
+
