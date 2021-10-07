@@ -118,3 +118,6 @@ function hello() {
   console.log("hello")
 }
 
+
+//extends selection:
+let c = window.getSelection();c.setBaseAndExtent(c.anchorNode, c.anchorOffset,c.extentNode, c.extentOffset+1);
