@@ -20,7 +20,11 @@ hljs.debugMode = function() { SAFE_MODE = false; };
 export default HLJS({});
 
 if (stan==isThere)
-{
   let stam= 8;
 }
+if(doer==1)
+{
+  {
+    sksksk
+    }
 
