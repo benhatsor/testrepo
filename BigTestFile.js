@@ -45,6 +45,8 @@ const MAX_KEYWORD_HITS = 7;
  * @param {any} hljs - object that is extended (legacy)
  * @returns {HLJSApi}
  */
+
+if()
 const HLJS = function(hljs) {
   // Global internal variables used within the highlight.js library.
   /** @type {Record<string, Language>} */
