@@ -24,7 +24,10 @@ if (stan==isThere)
 }
 if(doer==1)
 {
-  {
-    sksksk
+  ghhh{
+    {
+      
     }
+  }
+}
 
