@@ -121,3 +121,6 @@ function hello() {
 
 //extends selection:
 let c = window.getSelection();c.setBaseAndExtent(c.anchorNode, c.anchorOffset,c.extentNode, c.extentOffset+1);
+
+cd.dropper.cursor().startContainer
+
