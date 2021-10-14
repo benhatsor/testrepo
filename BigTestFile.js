@@ -33,6 +33,9 @@ import * as logger from "./lib/logger.js";
 @typedef {import('highlight.js').HighlightResult} HighlightResult
 */
 
+if(stam==wee){
+  let stam= 1;
+}
 
 
 
