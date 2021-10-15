@@ -13,6 +13,11 @@ import { compileLanguage } from './lib/mode_compiler.js';
 import * as packageJSON from '../package.json';
 import * as logger from "./lib/logger.js";
 
+
+
+if(stam ==1){
+  let stam = 2;
+}
 /**
 @typedef {import('highlight.js').Mode} Mode
 @typedef {import('highlight.js').CompiledMode} CompiledMode
