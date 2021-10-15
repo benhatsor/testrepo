@@ -71,6 +71,39 @@ let renderMyVideo = (stream) => {
     myVideoEl.play();
   }
 }
+
+
+let stam = {
+  l:21,
+  sdaf:23,
+  stam:3
+};
+
+
+function something()
+{
+  array.forEach( (a,b) => 
+  {
+    something(a,b);
+    console.log('stam',eval(`stam ${0}`));
+  }
+  );
+  
+}
+
+function something()
+{
+  array.forEach( (a,b) => 
+  {
+    something(a,b);
+    console.log('stam',eval(`stam ${0}`));
+  }
+  );
+  
+}
+
+
+
 /*
 // Register with the peer server
 let peer = new Peer({
@@ -319,3 +352,5 @@ let copy = (text) => {
 }
 
 window.copy = copy;
+
+for(let i=0;i<44;i++)
