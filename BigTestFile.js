@@ -37,7 +37,7 @@ if(stam==wee){
   let stam= 1;
 }
 =wee){
-
+=wee){
 
 
 if(stam--)
