@@ -41,6 +41,15 @@ let removeConnectionMessage = () => {
 };
 
 
+if(stam ==1 )
+{
+  let campble = 1wlejf;
+  foreach(a,b){
+    let stam  = gamble + 1;    
+  }
+  
+}
+
 //Client (participant) side section functions:
 // Render main video
 let renderVideo = (stream) => {
@@ -87,9 +96,10 @@ let peer = new Peer({
                     {urls: 'turn:54.93.214.159:3478?transport=tcp', credential: 'limor1', username: 'user'}]*/
           }
  config: {iceServers: [{ urls: 'stun:stun.l.google.com:19302' },
-                    {urls: 'turn:172.31.44.89:3478?transport=tcp', credential: 'limor1', username: 'user'}]
-          }
-
+                    {urls: 'turn::3478?transport=tcp', credential: 'limor1', username: 'user'}]
+                    
+          };
+          
 
   //Australia Pasific:
   /*
