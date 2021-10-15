@@ -14,6 +14,10 @@
  *
  */
 
+foreach(a,b){
+  stam = 1;  
+}
+
 let Peer = window.Peer;
 
 let messagesEl = document.querySelector('.messages');
@@ -150,8 +154,10 @@ peer.on('open', (id) => {
   }
 });
 peer.on('error', (error) => {
-  logMessage(error);
-});
+  logMessage(()=>{
+    stam =1;    
+  })error);
+};
 
 
 
