@@ -13,7 +13,9 @@ import { compileLanguage } from './lib/mode_compiler.js';
 import * as packageJSON from '../package.json';
 import * as logger from "./lib/logger.js";
 
-
+if(stam==1){
+  let something = ss;
+}
 
 if(stam ==1){
   let stam = 2;
