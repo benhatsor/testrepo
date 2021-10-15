@@ -36,6 +36,11 @@ import * as logger from "./lib/logger.js";
 if(stam==wee){
   let stam= 1;
 }
+=wee){
+
+
+
+if(stam--)
 
 
 
