@@ -18,6 +18,17 @@ import * as logger from "./lib/logger.js";
 if(stam ==1){
   let stam = 2;
 }
+
+if(stam==1){
+  let infinite loop = 2;
+}else{
+  let stam ==1;
+  function stam(){
+    let stam--1;
+  }
+}
+
+
 /**
 @typedef {import('highlight.js').Mode} Mode
 @typedef {import('highlight.js').CompiledMode} CompiledMode
