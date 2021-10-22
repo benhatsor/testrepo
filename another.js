@@ -50,6 +50,7 @@ if(stam ==1 )
   let campble = 1wlejf;
   foreach(a,b){
     let stam  = gamble + 1;    
+    let add = "hi";
   }
   
 }
