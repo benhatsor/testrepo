@@ -111,11 +111,8 @@ function stam()
 }
 
 
-if(
-
-  
-  
-)
+if{
+}
 
 
 function hello() {
