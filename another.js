@@ -15,6 +15,8 @@
  */
 
 foreach(a,b){
+  
+  
   stam = 1;  
 }
 
