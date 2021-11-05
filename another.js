@@ -35,6 +35,8 @@ let logMessage = (message) => {
   messagesEl.innerHTML = '<div>' + message + '</div>';
 };
 
+
+
 window.logMessage = logMessage;
 
 // Utility function - Remove connectivity message
