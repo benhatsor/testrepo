@@ -1,3 +1,47 @@
+
+
+let anagrams = ["eat", "tea", "tan", "ate", "nat", "bat"];
+
+
+function groupAnagrams(anagrams) {
+  const wordGroups = anagrams.reduce((groups, anagram) => {
+    const word = anagram.split('').sort().join('');
+    if (groups[word]) {
+      groups[word].push(anagram);
+    } else {
+      groups[word] = [anagram];
+    }
+    return groups;
+  }, {});
+
+  return Object.values(wordGroups).map(group => group);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
  * Camarker (MIT License)
  * main.js
