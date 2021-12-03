@@ -8,3 +8,7 @@ addScript(
   'data:text/javascript;base64,' + 
   encodeUnicode(encodeURIComponent(decodeUnicode(resp.content)))),
   '', 'module')
+  
+  
+  // string that can be injected instead of relative path:
+  let ss = 'data:text/javascript;base64,' + encodeUnicode(encodeURIComponent(decodeUnicode(resp.content)));
