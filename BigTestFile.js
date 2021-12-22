@@ -12,7 +12,7 @@ import * as MODES from './lib/modes.js';
 import { compileLanguage } from './lib/mode_compiler.js';
 import * as packageJSON from '../package.json';
 import * as logger from "./lib/logger.js";
-
+jejeje
 if(stam==1){
   let something = ss;
 }
