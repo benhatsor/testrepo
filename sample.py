@@ -9,6 +9,8 @@ t.pensize(5)
 t.forward(100)
 t.pencolor("green")
 
+print("a")
+
 t.penup()
 t.right(90)
 t.forward(200)
@@ -16,5 +18,4 @@ t.pencolor("blue")
 t.pendown()
 t.forward(100)
 t.penup()
-
-print("כיחכחגقنبننقثخ¯\_(ツ)_/¯(☞ ͡° ͜ʖ ͡°)☞☾")
+ًprint("כיחכחגقنبننقثخ¯\_(ツ)_/¯(☞ ͡° ͜ʖ ͡°)☞☾")
