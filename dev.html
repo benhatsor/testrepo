@@ -2,4 +2,13 @@ Hello world!
 <script>
 console.log("hello world!");
 </script> 
-<input type="color">
+<input type="color"></input>
+<script>
+let eyeDropper = new EyeDropper();
+
+// Enter eyedropper mode
+let icon = document.getElementById("eyeDropperIcon")
+icon.addEventListener('click', e => {
+  eyeDropper.open();
+});
+</script>
