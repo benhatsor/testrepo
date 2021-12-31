@@ -1,2 +1,1 @@
-
-
+var syntax = [];document.querySelectorAll('code').forEach(code => { var contents = code.innerText.includes('(') ? code.innerText.split('(')[0] : code.innerText; if (contents && !contents.includes('<')) syntax.push(contents)})
