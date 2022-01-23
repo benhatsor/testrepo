@@ -56,7 +56,7 @@ body {
 }
 
 .videos .video-wrapper[title]::after {
-  content: attr(title);
+  content: attr(id);
   position: absolute;
   left: 0;
   bottom: 0;
@@ -80,20 +80,26 @@ body {
 
 <body>
 
-<div class="videos">
-  <div class="active video-wrapper" title="Mother kostik">
-    <video autoplay src="whatsaaa.mp4" class="video">
-  </div>
-  <div class="video-wrapper" title="Traditional kostik flag">
-    <video autoplay src="whatsaaa.mp4" class="video">
-  </div>
-  <div class="video-wrapper" title="Kostik's homeland">
-    <video autoplay src="whatsaaa.mp4" class="video">
-  </div>
-  <div class="video-wrapper" title="Cat">
-    <video autoplay src="whatsaaa.mp4" class="video">
-  </div>
-</div>
+<div class="videos"></div>
+
+<script>
+
+const videoWrapper = document.querySelector('.videos');
+
+function renderVideo(streamName, videoSrc) {
+  
+  videoWrapper.innerHTML += `
+      <div class="video-wrapper" id="`+ streamName +`">
+        <video autoplay src="`+ videoSrc +`" class="video">
+      </div>
+    `;
+  
+}
+
+
+renderVideo('Special name', 'whatsaaa.mp4');
+
+</script>
 
 </body>
 </html>
