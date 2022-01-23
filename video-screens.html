@@ -2,12 +2,98 @@
 <head>
 <style>
 
+body {
+  background: black;
+  margin: 10px;
+}
+
+.videos {
+  display: flex;
+  grid-gap: 10px;
+  width: 100%;
+  height: 100%;
+  height: max-content;
+}
+
+.videos .video-wrapper {
+  background: black;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: fit-content;
+}
+
+.videos .video-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  box-sizing: border-box;
+  transition: .2s ease;
+  outline: 10px solid #6d75f4;
+  z-index: 1;
+}
+
+.videos .video.active::before {
+  inset: 8px;
+  border-radius: 5px;
+}
+
+.video-wrapper .video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.videos .video-wrapper.active::before {
+  inset: 7.25px;
+  border-radius: 5px;
+}
+
+.videos .video-wrapper.hidden {
+  display: none;
+}
+
+.videos .video-wrapper[title]::after {
+  content: attr(title);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 10px 12.5px;
+  border-top-right-radius: 10px;
+  box-sizing: border-box;
+  font-family: system-ui;
+  color: #ffffffe8;
+  background: #000000d6;
+  backdrop-filter: blur(10px) brightness(0.5);
+  transition: .2s ease;
+}
+
+.videos .video-wrapper[title].active::after {
+  left: 7.25px;
+  bottom: 7.25px;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="video"></div>
+<div class="videos">
+  <div class="active video-wrapper" title="Mother kostik">
+    <img src="https://ct.counseling.org/wp-content/uploads/2016/04/Branding-Images_Russia.jpg" class="video">
+  </div>
+  <div class="video-wrapper" title="Traditional kostik flag">
+    <img src="https://wallpapercave.com/wp/wp1903266.jpg" class="video">
+  </div>
+  <div class="video-wrapper" title="Kostik's homeland">
+    <img src="https://www.eurohome-relocation.com/shared/content/uploads/2017/10/russian-federation.jpg" class="video">
+  </div>
+  <div class="video-wrapper" title="Cat">
+    <img src="https://external-preview.redd.it/aYE35I4Qms6RgeNd4lsUsKmq4EDRYAnS7BznBdBzVQ4.jpg?auto=webp&amp;s=e6b97c78f64e1b0fa9e14ec32b76c32b43bd7126" class="video">
+  </div>
+</div>
 
 </body>
 </html>
