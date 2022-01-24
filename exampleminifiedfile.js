@@ -1,322 +1,176 @@
-// Dependency importer
+/* 
+  module (dependency) importer
+*/
 
 
-// function fetches  file content from full path:
-async function getScriptFile2(scriptPath) {
+const moduleImporter = {};
 
-  // Map current tree location
-  const [user, repo, contents] = selectedFile.dir.split(',');
+(function() {
 
-  //Set the full script path:
-  let fullScriptPath = scriptPath;
+  // function fetches file content from full path
+  async function getScriptFile(scriptPath) {
 
-  //Get list of the files in the current directory:
-  let scriptPathArr = scriptPath.split('/').slice();
-  scriptPathArr.pop();
+    // map current tree location
+    const [user, repo, contents] = selectedFile.dir.split(',');
 
-  console.log(scriptPath, 'getItems: ', scriptPathArr.join('/').replaceAll(',', '').replace(repo, ''));
-  const resp = await git.getItems([user, repo, scriptPathArr.join('/').replaceAll(',', '').replace('/' + repo, '')]);
+    // set the full script path:
+    let fullScriptPath = scriptPath;
 
-  //Find the sha of the file:
-  let path = scriptPath.split('/');
-  let fileName = path[path.length - 1];
+    // get list of the files in current directory
+    let scriptPathArr = scriptPath.split('/').slice();
+    scriptPathArr.pop();
 
-  const fileObj = resp.filter(file => file.name == fileName);
+    const resp = await git.getItems([user, repo, scriptPathArr.join('/').replaceAll(',', '').replace('/' + repo, '')]);
 
-  if (fileObj.length > 0) {
+    // find file sha
+    let path = scriptPath.split('/');
+    let fileName = path[path.length - 1];
 
-    let fileSha = fileObj[0].sha;
+    const fileObj = resp.filter(file => file.name == fileName);
 
-    // Fetch the file content
-    const respF = await git.getBlob([user, repo], fileSha);
+    if (fileObj.length > 0) {
 
-    return respF.content;
+      let fileSha = fileObj[0].sha;
 
-  } else {
+      // fetch file content
+      const respF = await git.getBlob([user, repo], fileSha);
 
-    console.log('Cant find script', fileName);
-
-    return '';
-
-  }
-
-}
-
-
-
-
-// function fetches the relevant file content from relative path:
-async function getScriptFile(scriptPath) {
-
-  // map tree location
-  const [user, repo, contents] = treeLoc;
-
-  let dirPath = contents;
-  let fullScriptPath = scriptPath;
-
-  // if script path is relative
-  if (scriptPath[0] == '.') {
-
-    // if script is in up folder
-    if (scriptPath[0] == '.' && scriptPath[1] == '.') {
-
-      // go up one directory
-      dirPath = dirPath.split('/')[0];
-
-      // remove "/.." from script path
-      fullScriptPath = fullScriptPath.slice(3);
+      return respF.content;
 
     } else {
 
-      // remove "/." from script path
-      fullScriptPath = fullScriptPath.slice(2);
+      console.log('[module-importer] Can\'t find script', fileName);
+
+      return '';
 
     }
 
   }
 
-  let fileSha;
 
-  //   `../../../build/three.module.js`
+  // function caclulates the absolute path from the relative,
+  // given the current path of the file
 
-  // if file is above current directory
-  if (contents !== dirPath) {
+  function absolutePath(fileOriginPath, relativePath) {
 
-    console.log(dirPath, contents, fullScriptPath);
+    // count level up directory in relative dir: ../../
+    let numLevelUp = (relativePath.match(/(\.\.\/)/g) || []).length;
 
-    dirPath = fullScriptPath.split('/');
-    dirPath.pop();
+    let tmp = numLevelUp;
 
-    // go two directories up
-    /*if (fullScriptPath.includes('../../')) {
-      dirPath.pop();
-    }*/
+    // count total number of levels of relative path
+    let totNumLevels = (relativePath.match(/(\/)/g) || []).length;
 
-    dirPath = '/' + dirPath.join('/');
+    // get the down path (what path to go, after reaching the up directory)
+    let endPath = relativePath.replaceAll("../".repeat(numLevelUp), '');
+    endPath = endPath.replaceAll('./', '');
 
+    // get the full path up (from root - is at '0')
+    let origingNumLevels = fileOriginPath.split('/').length;
+    let pathUp = (fileOriginPath.split('/').slice(0, origingNumLevels - numLevelUp).join());
+    pathUp = pathUp.replaceAll(',', '/');
 
-    const upResp = await git.getItems([user, repo, dirPath]);
+    let fullPath = pathUp + '/' + endPath;
 
-    const fileObj = upResp.filter(file => file.path == fullScriptPath);
-
-    fileSha = fileObj[0].sha;
-    //fileSha = typeof( fileObj[0] == 'undefined' )? '' : fileObj[0].sha;
-
-  } else if (fullScriptPath.includes('/')) { // file is below
-
-    dirPath = fullScriptPath.split('/');
-    dirPath.pop();
-    dirPath = contents + '/' + dirPath.join('/');
-
-    const downResp = await git.getItems([user, repo, dirPath]);
-
-    const fileObj = downResp.filter(file => file.path == (contents.slice(1) + '/' + fullScriptPath));
-
-    fileSha = fileObj[0].sha;
-
-  } else { // file is in current directory
-
-    const fileEl = fileWrapper.querySelectorAll('.item.file').filter(file => file.querySelector('.name').textContent == fullScriptPath);
-
-    fileSha = getAttr(fileEl[0], 'sha');
-
-    console.log('getting sha from el tree, fileEl:', fileEl);
+    return fullPath;
 
   }
 
-  const resp = await git.getBlob([user, repo], fileSha);
 
-  return resp.content;
+  // function changes import statements from path to src content
+  moduleImporter.getImports = async (scriptContent, fileOriginPath) => {
 
-}
+    // import multiple params
+    let regImportParams = /(([\t\n\r ]*import \{[\t\n, a-zA-Z0-9_-]*\} from \'[\.\/a-zA-Z0-9_\-]*\.js\'\;))/g;
 
+    // import one param
+    let regImportPar = /(([\t\r\n ]*import [A-Za-z0-9_-]* from \'[\.\/a-zA-Z0-9_-]*\.js\'\;))/g;
 
-
-// Function caclulates the absolute path from the relative,
-// given the current path of the file
-// const [user, repo, contents] = treeLoc;
-// let dirPath = contents;
-function absolutePath(fileOriginPath, relativePath) {
-
-  //Count level up directory in relative dir : ../../
-  //let numLevelUp = (relativePath.match(/(..\/)/g) || []).length - 1;//(relativePath.match(new RegExp("../", "g")) || []).length;
-  let numLevelUp = (relativePath.match(/(\.\.\/)/g) || []).length; //(relativePath.match(new RegExp("../", "g")) || []).length;
-
-  let tmp = numLevelUp;
-  //let totNumLevels = (relativePath.match(/(\/)/g) || []).length;
-  //Count total number of levels of relative path:
-  let totNumLevels = (relativePath.match(/(\/)/g) || []).length;
-
-  //Total number of levels up:
-  //numLevelUp = totNumLevels - numLevelUp;
-
-  // Get the down path (what path to go, after reaching the up directory)
-  let endPath = relativePath.replaceAll("../".repeat(numLevelUp), '');
-  endPath = endPath.replaceAll('./', '');
-
-  // Get the full path up (from root - is at '0')
-  let origingNumLevels = fileOriginPath.split('/').length;
-  let pathUp = (fileOriginPath.split('/').slice(0, origingNumLevels - numLevelUp).join());
-  pathUp = pathUp.replaceAll(',', '/');
-
-  let fullPath = pathUp + '/' + endPath;
-  //console.log('endPath:',endPath,'\npathUp:',pathUp, ' totNumlevels',totNumLevels,' numLevelUp:',tmp,' numLevelUpFinal:',numLevelUp)
-
-  return fullPath;
-
-}
+    /*import * from myFile.js */
+    let regImportAll = /(([\t\n\r ]*import \* as [\t\n, a-zA-Z0-9_-]* from \'[\.\/a-zA-Z0-9_-]*\.js\'\;))/g;
 
 
+    // get the list of import scripts from given src
+    let impFileList = scriptContent.match(regImportParams);
+    if (impFileList) impFileList = impFileList.join().match(/([../a-zA-Z0-9_\-]*\.js)/g);
 
-//TBD
-// Function changes import statements from path to src content:
-async function getImports2(scriptContent, fileOriginPath) {
+    // get list with the second import format
+    let impFileListF2 = scriptContent.match(regImportAll);
+    if (impFileListF2) impFileListF2 = impFileListF2.join().match(/([../a-zA-Z0-9_\-]*\.js)/g);
 
-  //Import multiple params:
-  let regImportParams = /(([\t\n\r ]*import \{[\t\n, a-zA-Z0-9_-]*\} from \'[\.\/a-zA-Z0-9_\-]*\.js\'\;))/g;
+    let impFileListF3 = scriptContent.match(regImportPar);
+    if (impFileListF3) impFileListF3 = impFileListF3.join().match(/([../a-zA-Z0-9_\-]*\.js)/g);
 
-  //Import one param:
-  let regImportPar = /(([\t\r\n ]*import [A-Za-z0-9_-]* from \'[\.\/a-zA-Z0-9_-]*\.js\'\;))/g;
+    // if file contains no imports
+    if (!impFileList && !impFileListF2 && !impFileListF3) {
+      // return unmodifed script file
+      return scriptContent;
+    }
 
-  /*3*/
-  /*import * from myFile.js */
-  let regImportAll = /(([\t\n\r ]*import \* as [\t\n, a-zA-Z0-9_-]* from \'[\.\/a-zA-Z0-9_-]*\.js\'\;))/g;
+    // join the two results of two import format
+    if (impFileList && impFileListF2) {
+      impFileList = impFileList.concat(impFileListF2);
+    }
 
 
-  // Geet the list of import scripts from given src:
-  let impFileList = scriptContent.match(regImportParams);
-  if (impFileList) impFileList = impFileList.join().match(/([../a-zA-Z0-9_\-]*\.js)/g);
+    if (!impFileList) {
+      impFileList = impFileListF2;
+    }
 
-  //Get list with the second import format:
-  let impFileListF2 = scriptContent.match(regImportAll);
-  if (impFileListF2) impFileListF2 = impFileListF2.join().match(/([../a-zA-Z0-9_\-]*\.js)/g);
+    if (!impFileList && impFileListF3) {
+      impFileList = impFileListF3;
+    } else {
+      // add the third import option if available
+      impFileList = impFileListF3 ? impFileList.concat(impFileListF3) : impFileList;
+    }
 
-  let impFileListF3 = scriptContent.match(regImportPar);
-  if (impFileListF3) impFileListF3 = impFileListF3.join().match(/([../a-zA-Z0-9_\-]*\.js)/g);
 
-  // if file contains no imports
-  if (!impFileList && !impFileListF2 && !impFileListF3) {
-    // return unmodifed script file
+
+    let fullPathList = [];
+    let impSrcListContent = [];
+
+    // for each import statetment
+    await Promise.all(impFileList.map(async (relativeFilePath) => {
+
+      // get the absolute path from the relative path
+      let absPath = absolutePath(fileOriginPath, relativeFilePath);
+
+      // fetch the imported script
+      let importedScript = await getScriptFile(absPath);
+
+      let relPath = absPath.split('/');
+
+      // if the relative path includes a file name,
+      // remove file name from path
+      if (relPath[relPath.length - 1].includes('.')) {
+
+        let res = relPath.slice();
+        res.pop();
+        relPath = res;
+      }
+
+      // combine array to path
+      relPath = relPath.join('/');
+
+      // get all imports in script
+      importedScript = await getImports2(decodeUnicode(importedScript), relPath);
+
+      importedScript = 'data:text/javascript;base64,' +
+        encodeURIComponent(encodeUnicode(importedScript));
+
+      if (importedScript.includes('\'')) {
+
+        console.log('[module-importer] Invalid encoding', absPath);
+
+      }
+
+      // replace the relative path with actual script content
+      scriptContent = scriptContent.replaceAll(relativeFilePath, importedScript);
+
+    }));
+
     return scriptContent;
-  }
-
-  //join the two results of two import format:
-  if (impFileList && impFileListF2) {
-    impFileList = impFileList.concat(impFileListF2);
-  }
-
-
-  if (!impFileList) {
-    impFileList = impFileListF2;
-  }
-
-  if (!impFileList && impFileListF3) {
-    impFileList = impFileListF3;
-  } else {
-    //Add the third import option if availible:
-    impFileList = impFileListF3 ? impFileList.concat(impFileListF3) : impFileList;
-  }
-
-
-
-  let fullPathList = [];
-  let impSrcListContent = [];
-
-  console.log(impFileList);
-
-
-  // For each import statetment:
-  await Promise.all(impFileList.map(async (relativeFilePath) => {
-
-    // Get the absolute path from the relative path:
-    let absPath = absolutePath(fileOriginPath, relativeFilePath);
-    //fullPathList.push(absPath);
-
-    // Fetch the imported script:
-    let importedScript = await getScriptFile2(absPath);
-
-    let relPath = absPath.split('/');
-
-    //If the relative path includes a file name, remove the filename from path
-    if (relPath[relPath.length - 1].includes('.')) {
-
-      let res = relPath.slice();
-      res.pop();
-      relPath = res;
-    }
-
-    //Combine the array to path:
-    relPath = relPath.join('/');
-
-    // get all imports in script
-    importedScript = await getImports2(decodeUnicode(importedScript), relPath);
-
-    importedScript = 'data:text/javascript;base64,' +
-      encodeURIComponent(encodeUnicode(importedScript));
-
-    if (importedScript.includes('\'')) {
-
-      console.log('not encoded properly', absPath);
-
-    }
-
-    // Replace the relative path with actual script content:
-    scriptContent = scriptContent.replaceAll(relativeFilePath, importedScript);
-
-  }));
-
-  return scriptContent;
-
-}
-
-
-// find all import statements in script
-async function getImports(script) {
-
-  let scriptContent = script;
-
-  const lines = script.replaceAll('\t', '').split('\n');
-  const importReg = /[ \t\n]*import /i;
-  const importReg2 = /[ \t\n]*from[ \t]*'/i;
-
-  for (let i = 0; i < lines.length; i++) {
-
-    const words = lines[i].trim().split(' ');
-
-    if (importReg.exec(lines[i]) || importReg2.exec(lines[i])) {
-
-      let importedScriptPath = words[words.length - 1].slice(1, -2); // remove first char and two last chars
-
-      console.log('path', importedScriptPath);
-      if (importReg2.exec(lines[i])) {
-        console.log('Special case!', lines[i]);
-      }
-
-
-      // if imported script is a javascript file
-      if (importedScriptPath.endsWith('.js')) {
-
-        // fetch script
-        let importedScript = await getScriptFile(importedScriptPath);
-
-        // get all imports in script
-        importedScript = await getImports(decodeUnicode(importedScript));
-
-        // replace import statment with encoded script
-        scriptContent = scriptContent.replace(importedScriptPath,
-          'data:text/javascript;base64,' +
-          encodeURIComponent(encodeUnicode(importedScript)));
-
-      } else {
-
-        console.log('err', words, lines[i + 1], lines[i + 2]);
-
-      }
-
-    }
 
   }
 
-  return scriptContent;
-
-}
+})();
