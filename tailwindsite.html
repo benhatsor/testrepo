@@ -2,12 +2,109 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+<body class="bg-blue-100">
+  <div class="title-wrapper">
+    <h1 class="title text-4xl font-semibold text-center mt-16 mb-11 text-blue-600">Limor Hatsor</h1>
+    <h2 class="subtitle text-2xl text-center text-blue-500">M.Sc PhD.</h2>
+  </div>
+  <div class="section flex gap-8 flex-wrap mx-auto px-8">
+    <div class="publication p-5 bg-white rounded-xl width-auto">
+      <div class="details">
+        <div class="title text-l font-medium">
+          Higher education funding: The value of information&ZeroWidthSpace;</div>
+        <div class="desc text-base text-gray-500">Economics Letters 137 (2015) 230–233</div>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" class="download text-white w-10 h-10 bg-blue-500">
+        <path d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" fill="currentColor"></path>
+      </svg>
+    </div>
+    <div class="publication p-5 bg-white rounded-xl width-auto">
+      <div class="details">
+        <div class="title text-l font-medium">
+          Higher education funding: The value of information&ZeroWidthSpace;</div>
+        <div class="desc text-base text-gray-500">Economics Letters 137 (2015) 230–233</div>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" class="download text-white w-10 h-10 bg-blue-500">
+        <path d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" fill="currentColor"></path>
+      </svg>
+    </div>
+    <div class="publication p-5 bg-white rounded-xl width-auto">
+      <div class="details">
+        <div class="title text-l font-medium">
+          Higher education funding: The value of information&ZeroWidthSpace;</div>
+        <div class="desc text-base text-gray-500">Economics Letters 137 (2015) 230–233</div>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" class="download text-white w-10 h-10 bg-blue-500">
+        <path d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" fill="currentColor"></path>
+      </svg>
+    </div>
+    </div>
+
+<style>
+.publication {
+  min-width: 275px;
+  display: inline-flex;
+  box-sizing: border-box;
+  width: 100%;
+  box-shadow: 1px 6px 12px 0px #d3e2f5;
+}
+
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin: 42px 0;
+  margin: 54.5px 0;
+  background: linear-gradient(rgb(219 234 254 / 0%), rgb(219 234 254) 20px);
+  padding-top: 40px;
+  margin-top: calc(54.5px - 40px);
+}
+
+.title-wrapper .title {
+  letter-spacing: -0.02px;
+  font-size: 32px;
+  margin-bottom: auto;
+  margin-top: 64px;
+}
+
+.publication .title {
+  line-height: 26px;
+  font-size: 19px;
+}
+
+.publication .desc {
+  margin-top: 6px;
+  font-size: 15px;
+}
+
+.title-wrapper .subtitle {
+  margin-top: 6px;
+  margin-top: 5.5px;
+}
+
+.download {
+  height: 42px;
+  width: 64px;
+  height: auto;
+  border-radius: 50%;
+  padding: 12.5px;
+  box-sizing: border-box;
+  margin: auto;
+  margin-bottom: 0;
+}
+
+.title-wrapper {
+  position: sticky;
+  top: 64px;
+  z-index: -1;
+}
+</style>
 </body>
 </html>
