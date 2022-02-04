@@ -68,7 +68,7 @@ papers.forEach(paper => {
 
   out += `
   
-    <div class="publication p-5 bg-white rounded-xl width-auto" onclick="downloadFile(` + paper.file + `)">
+    <div class="publication p-5 bg-white rounded-xl width-auto" onclick="downloadFile('` + paper.file + `')">
       <div class="details">
         <div class="title text-l font-medium">` + paper.name + `</div>
         <div class="desc text-base text-gray-500">` + paper.subtitle + `</div>
@@ -88,12 +88,7 @@ publications.innerHTML = out;
 
 function downloadFile(filePath) {
 
-  const anchor = document.createElement('a');
-  anchor.href = filePath;
-  anchor.download = 'true';
-
-  anchor.click();
-  anchor.remove();
+  window.open(filePath, '_blank');
   
 }
 
@@ -118,14 +113,6 @@ function downloadFile(filePath) {
   margin-top: 5.5px;
 }
 
-.publication {
-  min-width: 275px;
-  display: inline-flex;
-  box-sizing: border-box;
-  width: 100%;
-  box-shadow: 1px 6px 12px 0px #d3e2f5;
-}
-
 .section {
   display: flex;
   align-items: center;
@@ -136,6 +123,15 @@ function downloadFile(filePath) {
   background: linear-gradient(rgb(219 234 254 / 0%), rgb(219 234 254) 20px);
   padding-top: 40px;
   margin-top: calc(54.5px - 40px);
+}
+
+.publication {
+  min-width: 275px;
+  display: inline-flex;
+  box-sizing: border-box;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: 1px 6px 12px 0px #d3e2f5;
 }
 
 .publication .title {
