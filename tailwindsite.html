@@ -132,6 +132,8 @@ function downloadFile(filePath) {
   width: 100%;
   cursor: pointer;
   box-shadow: 1px 6px 12px 0px #d3e2f5;
+  gap: 10px;
+  padding: 20px;
 }
 
 .publication .title {
@@ -148,7 +150,7 @@ function downloadFile(filePath) {
 
 .publication .download {
   height: auto;
-  width: 64px;
+  width: 65px;
   border-radius: 50%;
   padding: 12.5px;
   box-sizing: border-box;
@@ -158,6 +160,10 @@ function downloadFile(filePath) {
 
 
 @media (min-width: 481px) {
+
+  .publication {
+    gap: 24px;
+  }
 
   .publication .download {
     margin-right: 0;
