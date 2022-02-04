@@ -18,9 +18,21 @@ const papers = [
   
   {
     
+    name: 'Curriculum Vitae',
+    file: 'CV_2022.pdf'
+    
+  },
+  
+  {
+    title: 'Publications',
+    color: 'teal-500'
+  },
+  
+  {
+    
     name: 'Higher education funding: The value of information',
     subtitle: 'Economics Letters 137 (2015) 230–233',
-    file: '/economic_letters.pdf'
+    file: 'economic_letters.pdf'
     
   }
   
@@ -31,13 +43,15 @@ const publications = document.querySelector('.publications');
 let out = '';
 
 papers.forEach(paper => {
+  
+  if (!paper.title) {
 
-  out += `
+    out += `
   
     <div class="publication p-5 bg-white rounded-xl width-auto" onclick="downloadFile('` + paper.file + `')">
       <div class="details">
         <div class="title text-l font-medium">` + paper.name + `</div>
-        <div class="desc text-base text-gray-500">` + paper.subtitle + `</div>
+        ` + (paper.subtitle ? `<div class="desc text-base text-gray-500">` + paper.subtitle + `</div>` : '') + `
       </div>
       <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" class="download text-white w-10 h-10 bg-blue-500">
         <path d="M0 0h24v24H0z" fill="none"></path>
@@ -45,7 +59,15 @@ papers.forEach(paper => {
       </svg>
     </div>
     
-  `;
+    `;
+
+  } else {
+    
+    out += `<h3 class="section-title text-`+ paper.color +` text-2xl font-semibold text-center mt-7 mb-5">
+            `+ paper.title +`
+            </h3>`;
+    
+  }
 
 });
 
@@ -89,6 +111,15 @@ function downloadFile(filePath) {
   background: linear-gradient(rgb(219 234 254 / 0%), rgb(219 234 254) 20px);
   padding-top: 40px;
   margin-top: calc(54.5px - 40px);
+  max-width: 450px;
+  margin: auto;
+}
+
+.section-title {
+  margin-bottom: -5px;
+  margin-top: 17px;
+  font-size: 23px;
+  font-weight: 500;
 }
 
 .publication {
@@ -100,6 +131,11 @@ function downloadFile(filePath) {
   box-shadow: 1px 6px 12px 0px #d3e2f5;
   gap: 10px;
   padding: 20px;
+  align-items: center;
+}
+
+.publication .details {
+  height: max-content;
 }
 
 .publication .title {
@@ -117,11 +153,23 @@ function downloadFile(filePath) {
 .publication .download {
   height: auto;
   width: 65px;
+  max-height: 49px;
+  max-width: 49px;
   border-radius: 50%;
   padding: 12.5px;
   box-sizing: border-box;
   margin: auto;
   margin-bottom: 0;
+  overflow: visible;
+  transition: .2s ease;
+  background: white;
+  margin-right: 0;
+  box-shadow: inset 0 0 0 24px rgb(59 130 246);
+}
+
+.publication:hover .download {
+  color: rgb(59 130 246);
+  box-shadow: inset 0 0 0 3.5px rgb(59 130 246);
 }
 
 
@@ -132,7 +180,6 @@ function downloadFile(filePath) {
   }
 
   .publication .download {
-    margin-right: 0;
     margin-bottom: auto;
     width: 24px;
     height: 24px;
