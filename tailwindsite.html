@@ -7,10 +7,11 @@
 </head>
 <body class="bg-blue-100">
   <div class="title-wrapper">
-    <h1 class="title text-4xl font-semibold text-center mt-16 mb-11 text-blue-600">Limor Hatsor</h1>
+    <a href="mailto:limor.hatsor@gmail.com" class="title text-4xl font-semibold text-center mt-16 mb-11 text-blue-600">Limor Hatsor</a>
     <h2 class="subtitle text-2xl text-center text-blue-500">PhD.</h2>
   </div>
   <div class="section publications flex gap-8 flex-wrap mx-auto px-8"></div>
+  <div class="copytext text-gray-500 text-base mt-10 mb-10 text-center">(C) 2012-2022 <a href="mailto:limor.hatsor@gmail.com" class="text-gray-600">Limor Hatsor</a></div>
 
 <script>
 
@@ -145,7 +146,6 @@ function downloadFile(filePath) {
 .title-wrapper {
   position: sticky;
   top: 64px;
-  z-index: -1;
 }
 
 .title-wrapper .title {
@@ -153,6 +153,7 @@ function downloadFile(filePath) {
   font-size: 32px;
   margin-bottom: auto;
   margin-top: 64px;
+  display: block;
 }
 
 .title-wrapper .subtitle {
@@ -171,6 +172,7 @@ function downloadFile(filePath) {
   margin-top: calc(54.5px - 40px);
   max-width: 450px;
   margin: auto;
+  position: relative;
 }
 
 .section-title {
@@ -237,6 +239,16 @@ function downloadFile(filePath) {
 
 .publication:hover .download path:nth-of-type(2) {
   fill: currentColor;
+}
+
+.copytext {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+
+a:hover {
+  text-decoration: underline;
 }
 
 
