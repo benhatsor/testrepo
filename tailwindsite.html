@@ -29,9 +29,33 @@ const papers = [
   },
   
   {
+    name: 'Subsidizing heterogeneous higher education systems',
+    subtitle: 'Journal of Public Economic Theory (2021), 23(2), 318-344',
+    file: 'jpet-zilcha.pdf',
+    color: 'teal-500'
+  },
+  {
+    name: 'Efficient implementation of industrial symbiosis',
+    subtitle: 'Heth Academic Center for Research of Competition and Regulation (2021)',
+    file: 'Heth_p.pdf',
+    color: 'teal-500'
+  },
+  {
+    name: 'Home production, market substitutes, and the labor supply of mothers',
+    subtitle: 'Journal of Economic Behavior and Organization (2020), 171, 378-390',
+    file: 'jebo_p.pdf',
+    color: 'teal-500'
+  },
+  {
     name: 'Higher education funding: The value of information',
     subtitle: 'Economics Letters (2015), 137, 230–233',
     file: 'economic_letters.pdf',
+    color: 'teal-500'
+  },
+  {
+    name: 'Allocation of resources in educational production: The budget puzzle',
+    subtitle: '​Journal of Public Economic Theory (2014), 16(6), 854–883',
+    file: 'jpet.pdf',
     color: 'teal-500'
   },
   {
@@ -40,12 +64,36 @@ const papers = [
     file: 'labour_economics.pdf',
     color: 'teal-500'
   },
+  
   {
-    name: 'Allocation of resources in educational production: The budget puzzle',
-    subtitle: '​Journal of Public Economic Theory (2014), 16(6), 854–883',
-    file: 'jpet.pdf',
-    color: 'teal-500'
-  }
+    title: 'Working Papers',
+    color: 'purple-500'
+  },
+  
+  {
+    name: 'Higher education funding – The value of choice',
+    subtitle: '​With Ronen Bar-El (2022)',
+    file: 'higher-education.pdf',
+    color: 'purple-500'
+  },
+  {
+    name: 'The more the merrier? Disciplinary actions against malpractice',
+    subtitle: '​With Artyom Jelnov',
+    file: 'disciplinary_actions.pdf',
+    color: 'purple-500'
+  },
+  {
+    name: 'Breastfeeding and labor supply of new mothers: evidence from a baby formula hazard realization',
+    subtitle: '​With Ity Shurtz',
+    file: 'remedia.pdf',
+    color: 'purple-500'
+  },
+  {
+    name: 'Product regulation and protectionism',
+    subtitle: '​With Artyom Jelnov',
+    file: 'product_regulation.pdf',
+    color: 'purple-500'
+  },
   
 ];
 
@@ -87,7 +135,7 @@ publications.innerHTML = out;
 
 function downloadFile(filePath) {
 
-  window.open(filePath, '_blank');
+  window.open('/files/' + filePath, '_blank');
   
 }
 
@@ -111,7 +159,6 @@ function downloadFile(filePath) {
   margin-top: 6px;
   margin-top: 5.5px;
 }
-
 .section {
   display: flex;
   align-items: center;
@@ -120,7 +167,7 @@ function downloadFile(filePath) {
   margin: 42px 0;
   margin: 54.5px 0;
   background: linear-gradient(rgb(219 234 254 / 0%), rgb(219 234 254) 20px);
-  padding-top: 40px;
+  padding: 40px 0;
   margin-top: calc(54.5px - 40px);
   max-width: 450px;
   margin: auto;
