@@ -1,2 +1,55 @@
+<html>
+<head>
+<style>
 
-
+body {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  --sidebar-width: 350px;
+}
+
+.sidebar {
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: #677af6;
+}
+
+.content {
+  width: calc(100vw - var(--sidebar-width));
+  height: 100vh;
+  background: #fff;
+}
+
+.alert {
+  position: fixed;
+  bottom: 20px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: #e5e5e5;
+  border: 1px solid rgba(255, 255, 255, 50%);
+  font-family: system-ui;
+  
+  /* center of screen */
+  left: 50vw;
+  transform: translateX(-50%);
+  
+  /* 
+    center of .content element
+    w/o additional elements
+   */
+  left: calc(((100vw - var(--sidebar-width)) / 2) + var(--sidebar-width));
+  
+}
+
+</style>
+</head>
+<body>
+
+<div class="sidebar"></div>
+<div class="content"></div>
+
+<div class="alert">Lorem ispum</div>
+
+</body>
+</html>
