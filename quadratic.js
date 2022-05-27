@@ -17,4 +17,4 @@ function calculateQuad(a, b, c) {
 
 const res = calculateQuad(1, 3, 5);
 
-document.body.innerText = res[0] + ',' + res[1];
+document.body.innerText = 'x1 = ' + res[0] + ', x2 = ' + res[1];
