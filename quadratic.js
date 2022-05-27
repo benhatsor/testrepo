@@ -13,3 +13,6 @@ function calculateQuad(a, b, c) {
   
 }
 
+const res = calculateQuad(1, 3, 5);
+
+document.body.innerText = JSON.stringify(res);
