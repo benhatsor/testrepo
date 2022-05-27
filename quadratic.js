@@ -2,7 +2,9 @@
 function calculateQuad(a, b, c) {
   
   // discriminant
-  const disc = Math.pow(b, 2) - (4 * a * c);
+  const disc = Math.pow(b, 2) - (4 * a * c)
+  
+  if (disc < 0) return ['disc is negative']
   
   // quadratic formula
   // 2 responses
@@ -15,4 +17,4 @@ function calculateQuad(a, b, c) {
 
 const res = calculateQuad(1, 3, 5);
 
-document.body.innerText = JSON.stringify(res);
+document.body.innerText = res[0] + ',' + res[1];
