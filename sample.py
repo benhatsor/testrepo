@@ -1,20 +1,19 @@
-import turtle
 
-s = turtle.getscreen()
-t = turtle.Turtle()
+maxNum = int(input("Max num: "));
 
-t.pendown()
-t.right(90)
-t.pensize(5)
-t.forward(100)
-t.pencolor("green")
+fizzNum = int(input("Fizz num: "));
+buzzNum = int(input("Buzz num: "));
 
-print("a")
-
-t.penup()
-t.right(90)
-t.forward(200)
-t.pencolor("blue")
-t.pendown()
-t.forward(100)
-t.penup()
+for (i = 0; i < maxNum; i++) {
+  
+  if (i % fizzNum == 0 && i % buzzNum == 0) {
+    print("Fizzbuzz");
+  } else if (i % fizzNum == 0) {
+    print("Fizz");
+  } else if (i % buzzNum == 0) {
+    print("Buzz");
+  } else {
+    print(i);
+  }
+  
+}
