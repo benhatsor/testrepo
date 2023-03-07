@@ -1,2 +1,38 @@
 
-
+html, body {
+  font-family: system-ui;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  margin: 0;
+}
+
+.arrow {
+  font-size: 90px;
+  transform: rotate(-90deg);
+  color: #0061fd;
+  display: none;
+  transition: .1s ease-in-out color;
+}
+
+.arrow.visible {
+  display: block;
+}
+
+.arrow.facing {
+  color: hsl(172deg 100% 37%);
+}
+
+.log {
+  padding: 10px;
+  border-radius: 10px;
+  white-space: pre-wrap;
+  z-index: 1;
+}
+
+.arrow.visible + .log {
+  margin-top: 60px;
+}
+
