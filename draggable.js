@@ -116,7 +116,7 @@ class Draggable {
       
       this.swiped = false;
       
-      this.initialY = this.currentY;
+      this.initialY = currentY;
       this.offsetY = 0;
       
     }
