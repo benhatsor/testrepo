@@ -116,7 +116,21 @@ class Draggable {
       
       this.swiped = false;
       
-      this.initialY = currentY;
+      
+      let newCurrY = currentY;
+      
+      if (currentY < 0) {
+        
+        newCurrY -= this.options.requiredMovement;
+         
+      } else {
+        
+        newCurrY += this.options.requiredMovement;        
+        
+      }
+      
+      
+      this.initialY = newCurrY;
       this.offsetY = 0;
       
     }
