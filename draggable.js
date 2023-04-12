@@ -59,9 +59,9 @@ class Draggable {
     this.swiped = false;    
     this.click = false;
     
-    this.el.addEventListener('touchstart', this.touchStart);
-    this.el.addEventListener('touchmove', this.touchMove);
-    this.el.addEventListener('touchend', this.touchEnd);
+    addElListener('touchstart', this.touchStart);
+    addElListener('touchmove', this.touchMove);
+    addElListener('touchend', this.touchEnd);
     
   }
   
@@ -171,6 +171,14 @@ class Draggable {
     const hooks = this.options.eventHooks;
     
     if (type in hooks) hooks[type](data);
+    
+  }
+  
+  addElListener(type, callback) {
+    
+    this.el.addEventListener(type, function(e) {
+      callback(e);
+    });
     
   }
   
