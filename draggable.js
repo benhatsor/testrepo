@@ -98,31 +98,33 @@ class Draggable {
     }
     
     
-    // if not swiped yet
-    if (!this.swiped) {
-      
-      const requiredMovement = this.options.requiredMovement;
-      
-      // check if the cursor was dragged
-      // enough to be counted as a swipe
-      this.swiped = (Math.abs(this.offsetY) > requiredMovement);
+    const requiredMovement = this.options.requiredMovement;
     
-      if (this.swiped) {
-        
-        this.callEventHook('swipe', {
-          offset: this.offsetY,
-          direction: this.direction
-        });
-        
-      }
-    
+    // check if the cursor was dragged
+    // enough to be counted as a swipe
+    this.swiped = (Math.abs(this.offsetY) > requiredMovement);
+  
+    if (this.swiped) {
+      
+      this.callEventHook('swipe', {
+        offset: this.offsetY,
+        direction: this.direction
+      });
+      
+      
+      // reset values when swiped
+      
+      this.swiped = false;
+      
+      this.initialY = this.currentY;
+      this.offsetY = 0;
+      
     }
 
     
     this.callEventHook('drag', {
       offset: this.offsetY,
-      direction: this.direction,
-      swiped: this.swiped
+      direction: this.direction
     });
 
   }
