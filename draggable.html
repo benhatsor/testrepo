@@ -21,7 +21,7 @@
 
 const dragEl = document.querySelector('.drag');
 
-const draggable = new Draggable(dragEl);
+const draggable = new Draggable(dragEl, { requiredMovement: 10 });
 
 draggable.on('drag', (e) => {
   
