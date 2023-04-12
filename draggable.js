@@ -50,9 +50,7 @@ class Draggable {
   
   
   addDragListeners() {
-    
-    this.requiredMovement = this.options.requiredMovement;
-  
+      
     this.initialY = 0;
     this.offsetY = 0;
     
@@ -105,9 +103,11 @@ class Draggable {
     // if not swiped yet
     if (!this.swiped) {
       
+      const requiredMovement = this.options.requiredMovement;
+      
       // check if the cursor was dragged
       // enough to be counted as a swipe
-      this.swiped = (Math.abs(this.yOffset) > this.requiredMovement);
+      this.swiped = (Math.abs(this.yOffset) > requiredMovement);
     
     }
 
