@@ -24,7 +24,7 @@ class Draggable {
     
     if (currOptions) {
       
-      for (option in this.options) {
+      Object.keys(this.options).forEach(option => {
         
         if (option in currOptions) {
           
@@ -32,7 +32,7 @@ class Draggable {
           
         }
         
-      }
+      });
       
     }
     
