@@ -176,9 +176,7 @@ class Draggable {
   
   addElListener(type, callback) {
     
-    this.el.addEventListener(type, function(e) {
-      callback(e);
-    });
+    this.el.addEventListener(type, callback.bind(this));
     
   }
   
