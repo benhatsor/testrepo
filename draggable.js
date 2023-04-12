@@ -1,4 +1,11 @@
 
+/*
+ * draggable
+ *
+ * to use, create a new instance
+ * and add listeners ('drag', 'swipe') with instance.on(type, callback(data))
+ */
+
 class Draggable {
   
   constructor(el, options = null) {
@@ -158,7 +165,7 @@ class Draggable {
     
     const hooks = this.options.eventHooks;
     
-    if (type in hooks) hooks[type](data);
+    if (type in hooks) hookstype;
     
   }
   
