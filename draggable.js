@@ -37,7 +37,7 @@ class Draggable {
     }
     
     
-    addDragListeners();
+    this.addDragListeners();
     
   }
   
@@ -70,7 +70,7 @@ class Draggable {
   
   touchStart(e) {
 
-    this.initialY = getCursorPos(e);
+    this.initialY = this.getCursorPos(e);
 
     this.swiped = false;
     this.click = true;
@@ -84,7 +84,7 @@ class Draggable {
     
     // get offset from initial pos
     
-    const currentY = getCursorPos(e);
+    const currentY = this.getCursorPos(e);
     
     this.offsetY = currentY - this.initialY;
     
@@ -116,7 +116,7 @@ class Draggable {
     if (this.click) this.click = false;
     
     
-    callEventHook('drag', {
+    this.callEventHook('drag', {
       offset: this.offsetY,
       direction: this.direction,
       swiped: this.swiped
@@ -125,7 +125,7 @@ class Draggable {
     
     if (this.swiped) {
       
-      callEventHook('swipe', {
+      this.callEventHook('swipe', {
         offset: this.offsetY,
         direction: this.direction
       });
@@ -170,7 +170,7 @@ class Draggable {
     
     const hooks = this.options.eventHooks;
     
-    if (type in hooks) hookstype;
+    if (type in hooks) hooks[type](data);
     
   }
   
