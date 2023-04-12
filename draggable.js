@@ -21,7 +21,7 @@ class Draggable {
     };
     
     // update options with selection
-    for (option in defaultOptions) {
+    for (option in this.options) {
       
       if (option in options) {
         
