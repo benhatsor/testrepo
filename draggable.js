@@ -154,7 +154,7 @@ class Draggable {
   
   getCursorPos(e) {
     
-    if (e.type === 'touchstart') {
+    if (e.type.startsWith('touch')) {
       
       return e.touches[0].clientY;
     
