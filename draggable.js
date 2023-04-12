@@ -105,7 +105,7 @@ class Draggable {
       
       // check if the cursor was dragged
       // enough to be counted as a swipe
-      this.swiped = (Math.abs(this.offsetY) >= requiredMovement);
+      this.swiped = (Math.abs(this.offsetY) > requiredMovement);
     
       if (this.swiped) {
         
