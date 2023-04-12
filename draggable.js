@@ -57,7 +57,6 @@ class Draggable {
     this.direction = null;
 
     this.swiped = false;    
-    this.click = false;
     
     this.addElListener('touchstart', this.touchStart);
     this.addElListener('touchmove', this.touchMove);
@@ -71,7 +70,6 @@ class Draggable {
     this.initialY = this.getCursorPos(e);
 
     this.swiped = false;
-    this.click = true;
 
   }
 
@@ -112,10 +110,6 @@ class Draggable {
     }
 
     
-    // dragging dosen't count as a click
-    if (this.click) this.click = false;
-    
-    
     this.callEventHook('drag', {
       offset: this.offsetY,
       direction: this.direction,
@@ -135,15 +129,6 @@ class Draggable {
   }
 
   touchEnd(e) {
-    
-    // if clicked
-    if (this.click) {
-      
-      // click target node
-      e.target.click();
-      this.click = false;
-      
-    }
     
     // reset values
     this.offsetY = 0;
