@@ -8,10 +8,8 @@ class Draggable {
     this.options = {
       requiredMovement: 30, // to be counted as a swipe
       eventHooks: {
-        touchstart: null,
         drag: null,
-        swipe: null,
-        touchend: null
+        swipe: null
       }
     };
     
@@ -64,8 +62,6 @@ class Draggable {
 
     this.swiped = false;
     this.click = true;
-    
-    callEventHook('touchstart');
 
   }
 
@@ -140,9 +136,6 @@ class Draggable {
     // reset values
     this.offsetY = 0;
     this.swiped = false;
-
-    
-    callEventHook('touchend');
 
   }
   
