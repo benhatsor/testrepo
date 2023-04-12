@@ -21,11 +21,16 @@ class Draggable {
     };
     
     // update options with selection
-    for (option in this.options) {
+    
+    if (currOptions) {
       
-      if (option in currOptions) {
+      for (option in this.options) {
         
-        this.options[option] = currOptions[option];
+        if (option in currOptions) {
+          
+          this.options[option] = currOptions[option];
+          
+        }
         
       }
       
