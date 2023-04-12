@@ -25,7 +25,7 @@ const draggable = new Draggable(dragEl);
 
 draggable.on('drag', (e) => {
   
-  console.log('[drag]', e);
+  //console.log('[drag]', e.offset);
   
 });
 
@@ -34,6 +34,12 @@ draggable.on('swipe', (e) => {
   console.log('[swipe]', e);
   
 });
+
+dragEl.addEventListener('click', () => {
+  
+  console.log('[click]');
+  
+})
 
 </script>
 
