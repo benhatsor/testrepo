@@ -1,2 +1,42 @@
+<html>
+<head>
+<style>
 
-
+.drag {
+  width: 200px;
+  height: 100px;
+  background: rebbecapurple;
+  border-radius: 10px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="drag"></div>
+
+<script src="draggable.js"></script>
+
+<script>
+
+const dragEl = document.querySelector('.drag');
+
+const draggable = new Draggable(dragEl);
+
+draggable.on('drag', (e) => {
+  
+  console.log('[drag]', e);
+  
+});
+
+draggable.on('swipe', (e) => {
+  
+  console.log('[swipe]', e);
+  
+});
+
+</script>
+
+</body>
+</html>
+
