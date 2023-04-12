@@ -107,6 +107,15 @@ class Draggable {
       // enough to be counted as a swipe
       this.swiped = (Math.abs(this.offsetY) > requiredMovement);
     
+      if (this.swiped) {
+        
+        this.callEventHook('swipe', {
+          offset: this.offsetY,
+          direction: this.direction
+        });
+        
+      }
+    
     }
 
     
@@ -115,16 +124,6 @@ class Draggable {
       direction: this.direction,
       swiped: this.swiped
     });
-    
-    
-    if (this.swiped) {
-      
-      this.callEventHook('swipe', {
-        offset: this.offsetY,
-        direction: this.direction
-      });
-      
-    }
 
   }
 
