@@ -2,13 +2,13 @@
 /*
  * draggable
  *
- * to use, create a new instance
- * and add listeners ('drag', 'swipe') with instance.on(type, callback(data))
+ * to use, create a new instance: new Draggable(el, ?options) [options = { requiredMovement, eventHooks }]
+ * and add listeners ('drag', 'swipe') with: instance.on(type, callback(event))
  */
 
 class Draggable {
   
-  constructor(el, options = null) {
+  constructor(el, setOptions = null) {
     
     this.el = el;
     
