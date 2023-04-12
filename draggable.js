@@ -8,7 +8,7 @@
 
 class Draggable {
   
-  constructor(el, setOptions = null) {
+  constructor(el, currOptions = null) {
     
     this.el = el;
     
@@ -23,9 +23,9 @@ class Draggable {
     // update options with selection
     for (option in this.options) {
       
-      if (option in options) {
+      if (option in currOptions) {
         
-        this.options[option] = options[option];
+        this.options[option] = currOptions[option];
         
       }
       
