@@ -59,9 +59,9 @@ class Draggable {
     this.swiped = false;    
     this.click = false;
     
-    addElListener('touchstart', this.touchStart);
-    addElListener('touchmove', this.touchMove);
-    addElListener('touchend', this.touchEnd);
+    this.addElListener('touchstart', this.touchStart);
+    this.addElListener('touchmove', this.touchMove);
+    this.addElListener('touchend', this.touchEnd);
     
   }
   
