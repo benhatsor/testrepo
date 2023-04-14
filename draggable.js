@@ -1,6 +1,6 @@
 
 /*
- * draggable
+ * draggable.js
  *
  * to use, create a new instance: new Draggable(el, ?options) [options = { requiredMovement }]
  * and add listeners ('drag', 'swipe') with: instance.on(type, callback(event))
