@@ -63,6 +63,8 @@ class Draggable {
   }
   
   
+  // 'public' functions
+  
   on = function(eventType, callback) {
     
     const hooks = this.options.eventHooks[eventType];
