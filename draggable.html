@@ -23,11 +23,13 @@ const dragEl = document.querySelector('.drag');
 
 const draggable = new Draggable(dragEl);
 
+/*
 draggable.on('drag', (e) => {
   
-  // console.log('[drag]', e.offset, e.direction);
+  console.log('[drag]', e.offset, e.direction);
   
 });
+*/
 
 draggable.on('swipe', (e) => {
   
