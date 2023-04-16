@@ -69,17 +69,17 @@ class Draggable {
     
     hooks.push(callback);
     
-    return [eventType, hooks.length];
+    return [eventType, (hooks.length - 1)];
     
   }
   
   removeListener = function(listener) {
     
     const [eventType, index] = listener;
+    const hooks = this.options.eventHooks[eventType];
 
     // remove listener from array
-    this.options.eventHooks[eventType]
-      .splice(index, 1);
+    hooks.splice(index, 1);
     
   }
   
