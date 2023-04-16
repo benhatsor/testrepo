@@ -63,7 +63,7 @@ class Draggable {
   }
   
   
-  on(eventType, callback) {
+  on = function(eventType, callback) {
     
     const hooks = this.options.eventHooks[eventType];
     
@@ -73,7 +73,7 @@ class Draggable {
     
   }
   
-  removeListener(listener) {
+  removeListener = function(listener) {
     
     const [eventType, index] = listener;
     const hooks = this.options.eventHooks[eventType];
