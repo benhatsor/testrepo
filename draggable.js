@@ -76,10 +76,10 @@ class Draggable {
   removeListener = function(listener) {
     
     const [eventType, index] = listener;
-    const hooks = this.options.eventHooks[eventType];
-    
+
     // remove listener from array
-    hooks.splice(index, 1);
+    this.options.eventHooks[eventType]
+      .splice(index, 1);
     
   }
   
