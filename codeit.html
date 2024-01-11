@@ -1,1 +1,9 @@
-<div class="hello">hello!</div>
+<div class="hello">Hello world!</div>
+
+<script>
+console.log(decodeUnicode(JSON.parse(await (await fetch("https://api.github.com/repos/benhatsor/testrepo/contents/codeit.html?ref=main", {
+  "cache": "no-store",
+  "method": "GET",
+  "mode": "cors"
+})).text()).content))
+</script>
