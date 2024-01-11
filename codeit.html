@@ -3,7 +3,6 @@
 <script>
 console.log(decodeUnicode(JSON.parse(await (await fetch("https://api.github.com/repos/benhatsor/testrepo/contents/codeit.html?ref=main", {
   "cache": "no-store",
-  "method": "GET",
-  "mode": "cors"
+  "method": "GET"
 })).text()).content))
 </script>
