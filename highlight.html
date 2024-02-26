@@ -1,2 +1,14 @@
+<script type="module">
 
-
+import Highlights from "https://esm.sh/highlights";
+
+const highlighter = new Highlights();
+
+const html = highlighter.highlightSync({
+  fileContents: 'answer = 42',
+  scopeName: 'source.ruby',
+});
+
+console.log(html);
+
+</script>
