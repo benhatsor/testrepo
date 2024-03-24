@@ -1,3 +1,12 @@
+
+/* Font */
+:root:is(html) body {
+  --default-font-family: ".SFNSDisplay-Regular", "Helvetica Neue", "Lucida Grande", sans-serif;
+}
+
+
+/* Theme */
+
 :root:is(html) {
   --color-primary-old: rgb(26 115 232);
   --color-primary-variant: rgb(66 133 244);
