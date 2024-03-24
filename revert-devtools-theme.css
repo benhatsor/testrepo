@@ -1,7 +1,12 @@
 
 /* Font */
+
 :root:is(html) body {
   --default-font-family: ".SFNSDisplay-Regular", "Helvetica Neue", "Lucida Grande", sans-serif;
+}
+
+.tabbed-pane-header-tab {
+  justify-content: center;
 }
 
 
