@@ -1,4 +1,4 @@
-*:root {
+:root:is(html) {
   --color-primary-old: rgb(26 115 232);
   --color-primary-variant: rgb(66 133 244);
   --color-background: rgb(255 255 255);
@@ -284,7 +284,7 @@
   --sys-color-gradient-tertiary: var(--ref-palette-tertiary95)
 }
 
-*.-theme-with-dark-background {
+:root:is(html) .-theme-with-dark-background {
   --color-primary-old: rgb(138 180 248);
   --color-primary-variant: rgb(102 157 246);
   --color-background: rgb(32 33 36);
