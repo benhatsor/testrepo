@@ -9,6 +9,10 @@
   justify-content: center;
 }
 
+.tabbed-pane-shadow.vertical-tab-layout .tabbed-pane-header .tabbed-pane-header-tab {
+  justify-content: left;
+}
+
 
 /* Theme */
 
