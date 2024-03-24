@@ -5,6 +5,10 @@
   --default-font-family: ".SFNSDisplay-Regular", "Helvetica Neue", "Lucida Grande", sans-serif;
 }
 
+.vbox .tabbed-pane-header-tab-title {
+  margin: auto;
+}
+
 /*
 .tabbed-pane-header-tab {
   justify-content: center;
