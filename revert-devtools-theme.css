@@ -6,7 +6,8 @@
 }
 
 .vbox .tabbed-pane-header-tab-title {
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /*
