@@ -5,7 +5,7 @@
   --default-font-family: ".SFNSDisplay-Regular", "Helvetica Neue", "Lucida Grande", sans-serif;
 }
 
-.vbox .tabbed-pane-header-tab-title {
+.vbox:not(.tabbed-pane-shadow.vertical-tab-layout) .tabbed-pane-header-tab-title {
   margin-left: auto;
   margin-right: auto;
 }
@@ -15,7 +15,7 @@
   justify-content: center;
 }
 
-.tabbed-pane-shadow.vertical-tab-layout .tabbed-pane-header .tabbed-pane-header-tab {
+.tabbed-pane-shadow.vertical-tab-layout .tabbed-pane-header-tab {
   justify-content: left;
 }
 */
