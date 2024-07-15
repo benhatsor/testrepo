@@ -115,7 +115,7 @@ const addIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="
 const personGroup = `<div class="person">
   <div class="wsite-form-field wsite-name-field">
     <div style="clear:both;"></div>
-    <div class="wsite-form-radio-container wsite-form-left wsite-form-input-first-name">
+    <div class="wsite-form-radio-container wsite-form-left wsite-form-input-last-name">
       <select id="sex" class="form-select">
         <option value="">מין</option>
         <hr>
@@ -123,7 +123,7 @@ const personGroup = `<div class="person">
         <option value="m">זכר</option>
       </select>
     </div>
-    <div class="wsite-form-input-container wsite-form-right wsite-form-input-last-name">
+    <div class="wsite-form-input-container wsite-form-right wsite-form-input-first-name">
       <input class="wsite-form-input wsite-input" placeholder="גיל" type="number" id="age" min="0">
     </div>
   </div>
@@ -157,6 +157,7 @@ h2 {
     padding: 20px;
     padding-bottom: 10px;
     margin: 10px 0;
+    width: max-content;
 }
 
 .form-select {
