@@ -186,8 +186,16 @@ window.addEventListener('load', init);
   src: url('https://assets.codepen.io/3537853/SimplerPro_H-Regular.woff2') format('woff2');
 }
 
-html {
-  font-family: 'Simpler', system-ui;
+@font-face {
+  font-family: 'Simpler';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://assets.codepen.io/3537853/SimplerPro_H-Bold.woff2') format('woff2');
+}
+
+* {
+  font-family: 'Simpler', 'Quattrocento', system-ui !important;
 }
 
 </style>
