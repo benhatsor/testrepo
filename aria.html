@@ -40,7 +40,7 @@ function init() {
 
   addButton.addEventListener('click', () => {
     
-    peopleWrapper.innerHTML += personGroup;
+    peopleWrapper.appendChild(fragmentFromString(personGroup));
     
   });
   
@@ -70,6 +70,13 @@ const personGroup = `<div class="person-group">
   </div>
   <div style="clear:both;"></div>
 </div>`;
+
+
+function fragmentFromString(strHTML) {
+    const temp = document.createElement('template');
+    temp.innerHTML = strHTML;
+    return temp.content;
+}
 
 
 window.addEventListener('load', init);
