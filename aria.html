@@ -8,15 +8,18 @@ function init() {
   
   let addButton, confirmButton;
   
+  
+  const prefix = 'https://example.com/';
+  
   buttons.forEach(button => {
     
-    if (button.textContent.trim() === '{addButton}') {
+    if (button.href === (prefix + 'add')) {
       
       addButton = button;
       
     }
     
-    if (button.textContent.trim() === '') {
+    if (button.href === (prefix + 'confirm')) {
       
       confirmButton = button;
       
