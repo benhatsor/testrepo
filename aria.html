@@ -47,24 +47,17 @@ function init() {
   
   confirmButton.addEventListener('click', () => {
     
-    const people = peopleWrapper.querySelectorAll('.person');
+    const peopleEl = peopleWrapper.querySelectorAll('.person');
     
-    people.forEach(person => {
-      
-      const age = person.querySelector('#age').value;
-      const sex = person.querySelector('#sex').value;
-      
-      if (age !== '' && sex !== '') {
-        
-        
-        
-      } else {
-        
-        alert(invalidFormValuesStr);
-        
-      }
-      
-    });
+    const peopleData = getPeopleData(peopleEl);
+    
+    if (!peopleData) return;
+    
+    const peopleDataStr = JSON.stringify(peopleData);
+    
+    localStorage.setItem('people', peopleDataStr);
+    
+    window.location.href = '/results';
     
   });
   
@@ -72,6 +65,34 @@ function init() {
   
   document.querySelector('#weebly-footer-signup-container-v3').remove();
 
+}
+
+
+function getPeopleData(peopleEl) {
+  
+  let people = [];
+  
+  peopleEl.forEach(person => {
+    
+    const age = person.querySelector('#age').value;
+    const sex = person.querySelector('#sex').value;
+    
+    if (age !== '' && sex !== '') {
+      
+      people.push({ age, sex });
+      
+    } else {
+      
+      alert(invalidFormValuesStr);
+      
+      return;
+      
+    }
+    
+  });
+  
+  return people;
+  
 }
 
 
