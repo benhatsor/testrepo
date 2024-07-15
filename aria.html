@@ -49,9 +49,17 @@ function init() {
     
     const peopleEl = peopleWrapper.querySelectorAll('.person');
     
+    
     const peopleData = getPeopleData(peopleEl);
     
-    if (!peopleData) return;
+    if (!peopleData) {
+      
+        alert(invalidFormValuesStr);
+        
+        return;
+        
+    }
+    
     
     const peopleDataStr = JSON.stringify(peopleData);
     
@@ -84,9 +92,7 @@ function getPeopleData(peopleEl) {
       people.push({ age, sex });
       
     } else {
-      
-      alert(invalidFormValuesStr);
-      
+            
       return;
       
     }
