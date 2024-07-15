@@ -88,7 +88,7 @@ function getResults(people) {
     
     let ageGroups = monthlyCalorieIntake[person.sex];
     
-    if (person.age <= monthlyCalorieIntake.child.age.max) {
+    if (person.age <= monthlyCalorieIntake.child[0].age.max) {
       
       // children's sex does not affect their intake
       ageGroups = monthlyCalorieIntake.child;
