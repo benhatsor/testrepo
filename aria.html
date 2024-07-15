@@ -51,7 +51,7 @@ function init() {
     
     const peopleData = getPeopleData(peopleEl);
     
-    if (!peopleData) return;
+    if (peopleData.length === 0) return;
     
     const peopleDataStr = JSON.stringify(peopleData);
     
