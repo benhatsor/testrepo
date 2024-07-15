@@ -1,2 +1,272 @@
+<script>
 
-
+function init() {
+  
+  renderResults();
+  
+
+  const buttons = document.querySelectorAll('.wsite-button');
+  
+  let infoButton;
+  
+  
+  const prefix = 'https://example.com/';
+  
+  buttons.forEach(button => {
+    
+    if (button.href === (prefix + 'info')) {
+      
+      button.href = '#';
+      
+      infoButton = button;
+      
+    }
+    
+  });
+  
+  
+  const infoEl = infoButton.parentElement.nextElementSibling;
+  const infoText = infoEl.textContent;
+  
+  infoButton.addEventListener('click', () => {
+    
+    alert(infoText);
+    
+  });
+  
+  
+  document.querySelector('#weebly-footer-signup-container-v3').remove();
+
+}
+
+
+function renderResults() {
+  
+  let people = localStorage.getItem('people');
+  
+  if (!people) return;
+  
+  people = JSON.parse(people);
+  
+  
+  const results = getResults(people);
+  
+  const wrapperEl = document.querySelector('.wsite-section');
+  
+  
+  Object.entries(resultPlaceholders).forEach(([key, placeholder]) => {
+    
+    let result = results[key]
+    
+    // @@debug
+    if (result === null) {
+      result = '?';
+    }
+    
+    result += '₪';
+    
+    wrapperEl.innerHTML = wrapperEl.innerHTML.replaceAll(placeholder, result);
+    
+  });
+  
+}
+
+
+
+function getResults(people) {
+  
+  // find sum
+  
+  let sumActive = 0;
+  let sumSed = 0;
+  
+  people.forEach(person => {
+    
+    if (person.age < 2) return;
+    
+    
+    let ageGroups = monthlyCalorieIntake[person.sex];
+    
+    if (person.age <= monthlyCalorieIntake.child.age.max) {
+      
+      // children's sex does not affect their intake
+      ageGroups = monthlyCalorieIntake.child;
+      
+    }
+    
+    
+    let intake;
+    
+    for (let i = 0; i < ageGroups.length; i++) {
+      
+      // find the person's age group
+      
+      const ageGroup = ageGroups[i];
+      
+      let inAgeGroup = false;
+      
+      if ('min' in ageGroup.age) {
+        
+        if (ageGroup.age.min > person.age) {
+          
+          inAgeGroup = false;
+          
+        }
+        
+      }
+      
+      if ('max' in ageGroup.age) {
+        
+        if (ageGroup.age.max < person.age) {
+          
+          inAgeGroup = false;
+          
+        }
+        
+      }
+      
+      
+      if (inAgeGroup) {
+        
+        intake = ageGroup.intake;
+        
+        break;
+        
+      }
+      
+    }
+    
+    
+    sumActive += intake.active;
+    sumSed += intake.sed;
+    
+  });
+  
+  
+  const basketsActive = sumActive / caloriesPerBasket;
+  const basketsSed = sumSed / caloriesPerBasket;
+  
+  const foodNormActive = basketsActive * minBasketPrice;
+  const foodNormSed = basketsSed * minBasketPrice;
+  
+  
+  return {
+    'active foodNorm': foodNormActive,
+    'sed foodNorm': foodNormSed
+  };
+  
+}
+
+
+
+const resultPrefixes = ['פעילה' ,'לא פעילה'];
+
+const resultPrefixes = {
+  active: 'פעילה',
+  sed: 'לא פעילה'
+};
+
+const resultKeys = {
+  low: 'נמוך',
+  high: 'גבוה',
+  foodNorm: 'תקציב'
+};
+
+
+let resultPlaceholders = {};
+
+Object.entries(resultPrefixes).forEach(([prefixName, prefix]) => {
+  
+  Object.entries(resultKeys).forEach(([keyName, key]) => {
+    
+    const name = prefixName + ' ' + keyName;
+    const value = prefix + ' ' + key;
+    
+    resultPlaceholders[name] = value;
+    
+  });
+  
+});
+
+
+
+
+// monthlyCalorieIntakes (FDA data)
+const monthlyCalorieIntake = {
+  male: [{
+    age: {
+      min: 23,
+      max: 45
+    },
+    intake: {
+      active: 34,
+      sed: 23
+    }
+  }],
+  child: ...,
+  ...
+};
+
+const caloriesPerBasket = 53096.57;
+
+const minBasketPrice = 692;
+
+
+
+window.addEventListener('load', init);
+
+</script>
+
+
+
+<style>
+
+h2 {
+  font-weight: 600;
+}
+
+.wsite-button-inner {
+  font-weight: 600 !important;
+}
+
+
+.cento-header .nav-wrap {
+  display: none;
+}
+
+.footer-wrap {
+  display: none;
+}
+
+
+@font-face {
+  font-family: 'Simpler';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://assets.codepen.io/3537853/SimplerPro_H-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Simpler';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('https://assets.codepen.io/3537853/SimplerPro-Semibold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Simpler';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://assets.codepen.io/3537853/SimplerPro_H-Bold.woff2') format('woff2');
+}
+
+*, #wsite-title {
+  font-family: 'Simpler', 'Quattrocento', system-ui !important;
+  letter-spacing: normal !important;
+}
+
+</style>
+
