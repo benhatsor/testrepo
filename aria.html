@@ -70,7 +70,10 @@ function init() {
   });
   
   
-  
+    
+  const title = document.querySelector('title');
+  title.textContent = title.textContent.replace('-', '');
+
   document.querySelector('#weebly-footer-signup-container-v3').remove();
 
 }
