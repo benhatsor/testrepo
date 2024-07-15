@@ -45,7 +45,14 @@ function renderResults() {
   
   let people = localStorage.getItem('people');
   
-  if (!people) return;
+  if (!people) {
+    
+    window.location.href = '/';
+    
+    return;
+    
+  }
+  
   
   people = JSON.parse(people);
   
