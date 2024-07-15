@@ -1,8 +1,86 @@
-<div aria-hidden="true">Hello</div>
+<script>
+
+function init() {
+
+  const peopleWrapper = document.querySelector('.people-wrapper');
+
+  const buttons = document.querySelectorAll('.wsite-button');
+  
+  let addButton, confirmButton;
+  
+  buttons.forEach(button => {
+    
+    if (button.textContent.trim() === '{addButton}') {
+      
+      addButton = button;
+      
+    }
+    
+    if (button.textContent.trim() === '') {
+      
+      confirmButton = button;
+      
+    }
+    
+  });
+  
+  
+  
+  addButton.children[0].innerHTML = addIcon;
+
+  peopleWrapper.innerHTML = '';
+
+  addButton.addEventListener('click', () => {
+    
+    peopleWrapper.innerHTML += personGroup;
+    
+  });
+
+}
+
+
+
+const addIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg>';
+
+const personGroup = `<div class="person-group" dir="rtl">
+  <div class="wsite-form-field wsite-name-field">
+    <div style="clear:both;"></div>
+    <div class="wsite-form-radio-container wsite-form-left wsite-form-input-first-name">
+      <select id="sex" class="form-select">
+        <option value="">מין</option>
+        <hr>
+        <option value="f">נקבה</option>
+        <option value="m">זכר</option>
+      </select>
+    </div>
+    <div class="wsite-form-input-container wsite-form-right wsite-form-input-last-name">
+      <input class="wsite-form-input wsite-input" placeholder="גיל" type="number" id="age" min="0">
+    </div>
+  </div>
+  <div style="clear:both;"></div>
+</div>`;
+
+
+window.addEventListener('load', init);
+
+</script>
+
+
+
 <style>
-div {
-  height: 100vh;
-  width: 100vw;
-  cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjYuNzMgNS43MyAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBkPSJNMTguNDEgMTYuNTlMMTMuODIgMTJsNC41OS00LjU5TDE3IDZsLTYgNiA2IDZ6TTYgNmgydjEySDZ6IiBzdHlsZT0iJiMxMDsgIGZpbGw6ICNmZmY7JiMxMDsgIHN0cm9rZTogIzAwMDsmIzEwOyAgc3Ryb2tlLXdpZHRoOiAwLjVweDsmIzEwOyIvPjwvc3ZnPg=='), w-resize;
+.person-group {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    padding-bottom: 10px;
+    margin: 10px 0;
+}
+
+.form-select {
+    background-position: 10%;
+}
+
+.wsite-form-input {
+    height: 40px;
 }
 </style>
+
