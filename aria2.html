@@ -55,9 +55,9 @@ function renderResults() {
   const wrapperEl = document.querySelector('.wsite-section');
   
   
-  Object.entries(resultPlaceholders).forEach(([key, placeholder]) => {
+  resultKeys.forEach(key => {
     
-    let result = results[key]
+    let result = results[key];
     
     // @@debug
     if (result === null) {
@@ -66,7 +66,7 @@ function renderResults() {
     
     result += '₪';
     
-    wrapperEl.innerHTML = wrapperEl.innerHTML.replaceAll(placeholder, result);
+    wrapperEl.innerHTML = wrapperEl.innerHTML.replaceAll(key, result);
     
   });
   
@@ -160,28 +160,19 @@ function getResults(people) {
 
 
 
-const resultPrefixes = {
-  active: 'פעילה',
-  sed: 'לא פעילה'
-};
+const resultPrefixes = ['active', 'sed'];
 
-const resultKeys = {
-  low: 'נמוך',
-  high: 'גבוה',
-  foodNorm: 'תקציב'
-};
+const unprefixedResultKeys = ['Low', 'High', 'FoodNorm'];
 
+let resultKeys = [];
 
-let resultPlaceholders = {};
-
-Object.entries(resultPrefixes).forEach(([prefixName, prefix]) => {
+resultPrefixes.forEach(prefix => {
   
-  Object.entries(resultKeys).forEach(([keyName, key]) => {
+  unprefixedResultKeys.forEach(key => {
     
-    const name = prefixName + ' ' + keyName;
-    const value = prefix + ' ' + key;
+    const name = prefixName + keyName;
     
-    resultPlaceholders[name] = value;
+    resultKeys.push(name);
     
   });
   
