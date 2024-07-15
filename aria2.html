@@ -152,27 +152,27 @@ function getResults(people) {
   
   
   return {
-    'active foodNorm': foodNormActive,
-    'sed foodNorm': foodNormSed
+    foodNormActive
+    foodNormSed
   };
   
 }
 
 
 
-const resultPrefixes = ['active', 'sed'];
+const resultSuffixes = ['Active', 'Sed'];
+const unsuffixedResultKeys = ['low', 'high', 'foodNorm'];
 
-const unprefixedResultKeys = ['Low', 'High', 'FoodNorm'];
 
 let resultKeys = [];
 
-resultPrefixes.forEach(prefix => {
+resultSuffixes.forEach(suffix => {
   
-  unprefixedResultKeys.forEach(key => {
+  unsuffixedResultKeys.forEach(key => {
     
-    const name = prefix + key;
+    key += suffix;
     
-    resultKeys.push(name);
+    resultKeys.push(key);
     
   });
   
