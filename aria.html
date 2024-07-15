@@ -84,7 +84,7 @@ function getPeopleData(peopleEl) {
     
     const person = peopleEl[i];
     
-    const age = person.querySelector('#age').value;
+    const age = Number(person.querySelector('#age').value);
     const sex = person.querySelector('#sex').value;
     
     if (age !== '' && sex !== '') {
