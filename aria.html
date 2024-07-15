@@ -15,7 +15,7 @@ function init() {
     
     if (button.href === (prefix + 'add')) {
       
-      button.href = '';
+      button.href = '#';
       
       addButton = button;
       
@@ -23,7 +23,7 @@ function init() {
     
     if (button.href === (prefix + 'confirm')) {
       
-      button.href = '';
+      button.href = '#';
       
       confirmButton = button;
       
@@ -35,7 +35,7 @@ function init() {
   addButton.children[0].innerHTML = addIcon;
   
 
-  peopleWrapper.innerHTML = '';
+  peopleWrapper.innerHTML = personGroup;
 
   addButton.addEventListener('click', () => {
     
