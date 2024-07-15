@@ -17,6 +17,9 @@ let currGroup;
 data.forEach((row, rowIndex) => {
 
   if (rowIndex === 0) return;
+
+  // if years column is empty, return
+  if (row[1] === '') return;
   
   row.forEach((column, colIndex) => {
 
@@ -25,14 +28,14 @@ data.forEach((row, rowIndex) => {
     // age group
     if (colIndex === 0 && column !== '') {
 
-      currGroup = column;
+      currGroup = column.toLowerCase();
+
+      if (currGroup === 'children') currGroup = 'child';
+      if (currGroup === 'males') currGroup = 'male';
+      if (currGroup === 'females') currGroup = 'female';
       
-    }
-
-    if (colIndex === 1 && column === '') {
-
-      return;
-
+      out[currGroup] = [];
+      
     }
 
     // years
@@ -40,32 +43,42 @@ data.forEach((row, rowIndex) => {
 
       column = column.replaceAll('+', '');
       
-      const [min, max] = column.split('-');
+      let [min, max] = column.split('-');
 
-      out[currGroup] = {
+      if (min) min = Number(min);
+      if (max) max = Number(max);
+      
+      out[currGroup].push({
         age: {
           min: min,
           max: max
-        }
-      };
+        },
+        intake: {}
+      });
 
     }
 
+    
+    const group = out[currGroup];
+    const ageGroup = group[group.length - 1];
+    
     // sed
     if (colIndex === 2) {
 
-      out[currGroup].sed = column;
+      ageGroup.intake.sed = Number(column);
 
     }
 
     // active
     if (colIndex === 3) {
 
-      out[currGroup].active = column;
+      ageGroup.intake.active = Number(column);
 
     }
     
   });
   
 });
+
+console.log(out);
 
