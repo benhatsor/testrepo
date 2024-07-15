@@ -45,6 +45,31 @@ function init() {
   });
   
   
+  confirmButton.addEventListener('click', () => {
+    
+    const people = peopleWrapper.querySelectorAll('.person');
+    
+    people.forEach(person => {
+      
+      const age = person.querySelector('#age').value;
+      const sex = person.querySelector('#sex').value;
+      
+      if (age !== '' && sex !== '') {
+        
+        
+        
+      } else {
+        
+        alert(invalidFormValuesStr);
+        
+      }
+      
+    });
+    
+  });
+  
+  
+  
   document.querySelector('#weebly-footer-signup-container-v3').remove();
 
 }
@@ -53,7 +78,7 @@ function init() {
 
 const addIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg>';
 
-const personGroup = `<div class="person-group">
+const personGroup = `<div class="person">
   <div class="wsite-form-field wsite-name-field">
     <div style="clear:both;"></div>
     <div class="wsite-form-radio-container wsite-form-left wsite-form-input-first-name">
@@ -70,6 +95,8 @@ const personGroup = `<div class="person-group">
   </div>
   <div style="clear:both;"></div>
 </div>`;
+
+const invalidFormValuesStr = 'לא מילאת את כל הטופס.';
 
 
 function fragmentFromString(strHTML) {
