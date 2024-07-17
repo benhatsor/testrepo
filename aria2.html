@@ -3,38 +3,7 @@
 function init() {
   
   renderResults();
-  
 
-  const links = document.querySelectorAll('a[href]');
-  
-  let infoButton;
-  
-  
-  const prefix = 'https://example.com/';
-  
-  links.forEach(link => {
-    
-    if (link.href === (prefix + 'info')) {
-      
-      link.href = '#';
-      
-      infoButton = link;
-      
-    }
-    
-  });
-  
-  
-  const infoEl = infoButton.parentElement.parentElement.nextElementSibling;
-  const infoText = infoEl.textContent;
-  infoEl.remove();
-  
-  infoButton.addEventListener('click', () => {
-    
-    alert(infoText);
-    
-  });
-  
   
   document.querySelector('#weebly-footer-signup-container-v3').remove();
 
