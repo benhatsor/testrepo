@@ -5,20 +5,20 @@ function init() {
   renderResults();
   
 
-  const buttons = document.querySelectorAll('.wsite-button');
+  const links = document.querySelectorAll('a[href]');
   
   let infoButton;
   
   
   const prefix = 'https://example.com/';
   
-  buttons.forEach(button => {
+  links.forEach(link => {
     
-    if (button.href === (prefix + 'info')) {
+    if (link.href === (prefix + 'info')) {
       
-      button.href = '#';
+      link.href = '#';
       
-      infoButton = button;
+      infoButton = link;
       
     }
     
@@ -27,7 +27,7 @@ function init() {
   
   const infoEl = infoButton.parentElement.nextElementSibling;
   const infoText = infoEl.textContent;
-  infoEl.textContent = '';
+  infoEl.remove();
   
   infoButton.addEventListener('click', () => {
     
