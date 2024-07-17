@@ -31,10 +31,8 @@ function renderResults() {
   const wrapperEl = document.querySelector('.wsite-section');
   
   
-  resultKeys.forEach(key => {
-    
-    let result = results[key];
-    
+  Object.entries(results).forEach(([key, result]) => {
+        
     // @@debug
     if (result === undefined) {
       
@@ -46,7 +44,11 @@ function renderResults() {
       
     }
     
-    result += '₪';
+    if (!key.startsWith('baskets')) {
+    
+      result += '₪';
+      
+    }
     
     wrapperEl.innerHTML = wrapperEl.innerHTML.replaceAll('[' + key + ']', result);
     
@@ -135,7 +137,9 @@ function getResults(people) {
   
   return {
     foodNormActive,
-    foodNormSed
+    foodNormSed,
+    basketsActive,
+    basketsSed
   };
   
 }
